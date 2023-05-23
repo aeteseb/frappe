@@ -693,12 +693,12 @@ def update_password(new_password: str, logout_all_sessions: int = 0, key: str = 
 		frappe.throw(_("Invalid key type"))
 
 	if user:
-		user_data = {'first_name': user.first_name,
-		'middle_name': user.middle_name,
-		'last_name': user.last_name,
-		'email': user.email,
-		'birth_date': user.birth_date
-		}
+		user_data = ( user.first_name,
+		user.middle_name,
+		user.last_name,
+		user.email,
+		user.birth_date
+		)
 	else:
 		user_data = None
 	

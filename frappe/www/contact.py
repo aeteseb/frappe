@@ -40,8 +40,19 @@ def send_message(sender, message, subject="Website Query"):
 			subject="We've received your query!",
 		)
 
+
 	# for clearing outgoing email error message
 	frappe.clear_last_message()
+
+	# add sender to message
+
+	message = f"From: {sender}\nMessage: {message}"
+
+	# send email
+	forward_to_email = frappe.db.get_single_value("Contact Us Settings", "forward_to_email")
+	if forward_to_email:
+		frappe.sendmail(recipients=forward_to_email, content=message, subject=subject)
+
 
 	# add to to-do ?
 	frappe.get_doc(

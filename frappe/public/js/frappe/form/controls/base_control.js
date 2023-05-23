@@ -14,7 +14,7 @@ frappe.ui.form.Control = class BaseControl {
 		this.wrapper = this.$wrapper.get(0);
 		this.wrapper.fieldobj = this; // reference for event handlers
 
-		this.tooltip = $(`<span class="tooltip-content">${__(this.df.fieldname)}</span>`);
+		this.tooltip = $(`<span class="tooltip-content">${__(this.df.tooltip)}</span>`);
 		this.$wrapper.append(this.tooltip);
 
 		this.tooltip.on("click", (e) => {
